@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>xxoacrilycss - Nail Services</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Calendly CSS -->
-    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <style>
         @import url('https://fonts.cdnfonts.com/css/lucy-said-ok');
         @font-face {
@@ -87,11 +85,9 @@
             padding: 0;
             border-radius: 12px;
             width: 90%;
-            max-width: 1000px;
+            max-width: 700px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
             animation: slideDown 0.3s;
-            max-height: 90vh;
-            overflow: hidden;
         }
 
         @keyframes slideDown {
@@ -137,15 +133,99 @@
         }
 
         .modal-body {
-            padding: 0;
-            max-height: calc(90vh - 80px);
+            padding: 2rem;
+            max-height: 70vh;
             overflow-y: auto;
         }
 
-        /* Calendly Container */
-        .calendly-inline-widget {
-            min-width: 320px;
-            height: 700px;
+        /* Booking Form */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #000000;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #000000;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .deposit-reminder {
+            background-color: #fffbea;
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 6px;
+        }
+
+        .deposit-reminder h4 {
+            color: #000000;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .deposit-reminder p {
+            color: #333;
+            font-size: 0.95rem;
+            margin: 0.3rem 0;
+        }
+
+        .submit-btn {
+            background-color: #000000;
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            background-color: #333333;
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        .submit-btn:disabled {
+            background-color: #666666;
+            cursor: not-allowed;
         }
 
         .book-btn {
@@ -166,6 +246,113 @@
         .book-btn:hover {
             background-color: #333333;
             transform: scale(1.05);
+        }
+
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 6px;
+            color: #155724;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .error-message {
+            display: none;
+            background-color: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 6px;
+            color: #721c24;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* File Upload Styling */
+        .file-upload {
+            margin-top: 1rem;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .file-label {
+            background-color: #000000;
+            color: white !important;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            letter-spacing: 1px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .file-label:hover {
+            background-color: #333333;
+        }
+
+        .file-label:active {
+            transform: scale(0.98);
+        }
+
+        .file-name {
+            font-size: 0.95rem;
+            color: #666;
+            display: block;
+            margin: 0.75rem 0;
+            font-style: italic;
+        }
+
+        .file-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+        }
+
+        .file-action {
+            background-color: #000000;
+            color: white !important;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            letter-spacing: 0.5px;
+        }
+
+        .file-action:hover {
+            background-color: #333333;
+        }
+
+        .file-action:active {
+            transform: scale(0.98);
+        }
+
+        .file-action.remove {
+            background-color: #dc3545;
+        }
+
+        .file-action.remove:hover {
+            background-color: #c82333;
+        }
+
+        .hidden {
+            display: none !important;
         }
 
         /* Service Section */
@@ -430,17 +617,31 @@
                 height: 40px;
             }
 
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
             .modal-content {
                 width: 95%;
                 margin: 5% auto;
+            }
+
+            .modal-body {
+                padding: 1.5rem;
             }
 
             .modal-header h2 {
                 font-size: 1.5rem;
             }
 
-            .calendly-inline-widget {
-                height: 600px;
+            .file-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .file-action {
+                width: 100%;
             }
         }
     </style>
@@ -701,7 +902,7 @@
         </div>
     </div>
 
-    <!-- Booking Modal with Calendly -->
+    <!-- Booking Modal -->
     <div id="bookingModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -709,12 +910,109 @@
                 <span class="close" onclick="closeBookingModal()">&times;</span>
             </div>
             <div class="modal-body">
-                <!-- REPLACE YOUR_CALENDLY_USERNAME with your actual Calendly username -->
-                <!-- Example: https://calendly.com/xxoacrilycss -->
-                <div class="calendly-inline-widget" 
-                     data-url="https://calendly.com/YOUR_CALENDLY_USERNAME?hide_gdpr_banner=1&primary_color=000000"
-                     style="min-width:320px;height:700px;">
-                </div>
+                <!-- IMPORTANT: Replace YOUR_FORMSPREE_ID with your actual Formspree form ID -->
+                <!-- Get your free form ID at: https://formspree.io -->
+                <form id="bookingForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" enctype="multipart/form-data">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="539-777-0059" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="_replyto">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Select Service *</label>
+                        <select id="service" name="service" required>
+                            <option value="">Choose a service...</option>
+                            <option value="Freestyle">Freestyle</option>
+                            <option value="Short Full Set">Short Full Set</option>
+                            <option value="Medium Full Set">Medium Full Set</option>
+                            <option value="Long Full Set">Long Full Set</option>
+                            <option value="Extra Long Full Set">Extra Long Full Set</option>
+                            <option value="Extendo Full Set">Extendo Full Set</option>
+                            <option value="Fill">Fill (specify in notes)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Preferred Date *</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Preferred Time *</label>
+                            <input type="time" id="time" name="time" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Additional Notes / Design Ideas</label>
+                        <textarea id="notes" name="notes" placeholder="Describe your nail design ideas, color preferences, or any special requests..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="file">Add a Sample Picture (Optional)</label>
+                        <div class="file-upload">
+                            <label for="file" class="file-label">
+                                <i class="fas fa-upload"></i> Choose Image
+                            </label>
+                            <input id="file" type="file" name="photo" accept="image/png, image/jpeg, image/jpg, image/webp">
+                            <span id="file-name" class="file-name">No file chosen</span>
+                            
+                            <div class="file-actions hidden" id="file-actions">
+                                <button type="button" id="change-btn" class="file-action">
+                                    <i class="fas fa-sync-alt"></i> Change
+                                </button>
+                                <button type="button" id="remove-btn" class="file-action remove">
+                                    <i class="fas fa-times"></i> Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hidden field for form name -->
+                    <input type="hidden" name="_subject" value="New Nail Appointment Booking">
+
+                    <div class="deposit-reminder">
+                        <h4><i class="fas fa-exclamation-circle"></i> Important Deposit Information</h4>
+                        <p><strong>$20 non-refundable deposit required</strong></p>
+                        <p>• Send via CashApp: <strong>$ivvettg</strong>, Apple Pay, or Cash</p>
+                        <p>• Include your NAME or an emoji (NOT "nails" or "appt")</p>
+                        <p>• Select "paying a friend/trusted person"</p>
+                        <p>• Your deposit will be applied to your total</p>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">Submit Booking Request</button>
+
+                    <div id="successMessage" class="success-message">
+                        <h4><i class="fas fa-check-circle"></i> Booking Request Received!</h4>
+                        <p>Thank you for your booking request. I'll receive your information and contact you shortly!</p>
+                        <p><strong>Next Steps:</strong></p>
+                        <p>1. Send your $20 deposit to CashApp: $ivvettg</p>
+                        <p>2. Wait for my text confirmation at 539-777-0059</p>
+                        <p>3. Include screenshot of deposit when I contact you</p>
+                    </div>
+
+                    <div id="errorMessage" class="error-message">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Submission Error</h4>
+                        <p>There was a problem submitting your booking. Please text me directly at 539-777-0059 or try again later.</p>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -723,9 +1021,6 @@
         <p>&copy; 2024 xxoacrilycss - All Rights Reserved</p>
         <p>Professional Nail Services</p>
     </footer>
-
-    <!-- Calendly JavaScript -->
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
     <script>
         // Initialize slideshows for each service
@@ -832,6 +1127,13 @@
         // Modal Functions
         function openBookingModal(serviceName) {
             const modal = document.getElementById('bookingModal');
+            const serviceSelect = document.getElementById('service');
+            
+            // Pre-select the service
+            if (serviceName) {
+                serviceSelect.value = serviceName;
+            }
+            
             modal.classList.add('show');
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
         }
@@ -840,6 +1142,10 @@
             const modal = document.getElementById('bookingModal');
             modal.classList.remove('show');
             document.body.style.overflow = 'auto'; // Re-enable scrolling
+            
+            // Reset messages
+            document.getElementById('successMessage').classList.remove('show');
+            document.getElementById('errorMessage').classList.remove('show');
         }
 
         // Close modal when clicking outside of it
@@ -849,6 +1155,100 @@
                 closeBookingModal();
             }
         }
+
+        // File Upload Handling
+        const fileInput = document.getElementById("file");
+        const fileName = document.getElementById("file-name");
+        const fileActions = document.getElementById("file-actions");
+        const changeBtn = document.getElementById("change-btn");
+        const removeBtn = document.getElementById("remove-btn");
+
+        fileInput.addEventListener("change", function() {
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                fileName.textContent = file.name;
+                fileActions.classList.remove("hidden");
+            }
+        });
+
+        // Change button - reopens file picker
+        changeBtn.addEventListener("click", function() {
+            fileInput.click();
+        });
+
+        // Remove button - clears the file
+        removeBtn.addEventListener("click", function() {
+            fileInput.value = "";
+            fileName.textContent = "No file chosen";
+            fileActions.classList.add("hidden");
+        });
+
+        // Booking Form Handling with Formspree
+        const form = document.getElementById('bookingForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            // Get form data
+            const formData = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Show success message
+                    successMessage.classList.add('show');
+                    errorMessage.classList.remove('show');
+                    
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // Reset form
+                    form.reset();
+                    fileName.textContent = "No file chosen";
+                    fileActions.classList.add("hidden");
+                    
+                    // Re-enable button
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Booking Request';
+                    
+                    // Close modal after 5 seconds
+                    setTimeout(() => {
+                        closeBookingModal();
+                    }, 5000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                // Show error message
+                errorMessage.classList.add('show');
+                successMessage.classList.remove('show');
+                
+                // Scroll to error message
+                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Booking Request';
+            }
+        });
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').setAttribute('min', today);
 
         // Start when page loads
         window.onload = initializeSlideshows;
